@@ -6,12 +6,9 @@ import { useState } from "react";
 export const ContainerApp = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const handleNext = () => {
-    if (currentPage === 2) return;
-    setCurrentPage(currentPage + 1);
-  };
+    if (currentPage === 5) return;
 
-  const handleBack = () => {
-    if (currentPage === 0) return;
+    setCurrentPage(currentPage + 1);
     if (currentPage === 1) {
       if (document.querySelector("#box-two")) {
         // @ts-ignore
@@ -25,7 +22,24 @@ export const ContainerApp = () => {
           .classList.add("animate__fadeOutLeft");
       }
     }
+  };
+
+  const handleBack = () => {
+    if (currentPage === 0) return;
     setCurrentPage(currentPage - 1);
+    if (currentPage === 1) {
+      if (document.querySelector("#box-two")) {
+        // @ts-ignore
+        document
+          .querySelector("#box-two")
+          .classList.remove("animate__fadeInLeft");
+        // @ts-ignore
+
+        document
+          .querySelector("#box-two")
+          .classList.add("animate__fadeOutLeft");
+      }
+    }
   };
 
   return (
@@ -227,20 +241,42 @@ export const ContainerApp = () => {
             sx={{
               color: "white",
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
               height: "calc(100vh - 10rem)",
             }}
           >
-            <Typography sx={{ fontFamily: "rexlia", fontSize: "1.5rem" }}>
-              Prueba
-            </Typography>
             <Box
               component="img"
-              src="IMG/BRAND INVERBET_07.png"
-              sx={{ width: "70%" }}
+              src="IMG/I.png"
+              sx={{
+                width: "30%",
+                borderRight: "5px solid white",
+                margin: "0 4rem",
+              }}
             />
+            <Box>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "4rem" }}>
+                TRADING <br /> DEPORTIVO
+              </Typography>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "2.5rem" }}>
+                Una manera inteligente de rentabilizar tu dinero.
+              </Typography>
+              <Button
+                sx={{
+                  marginTop: "0.5rem",
+                  padding: "0.5rem 1rem",
+                  color: "white",
+                  fontFamily: "rexlia",
+                  letterSpacing: "0.3rem",
+                  border: "2px solid white",
+                  borderRadius: "1rem",
+                }}
+              >
+                Leer mas
+              </Button>
+            </Box>
           </Box>
         )}
         {currentPage === 2 && (
@@ -254,27 +290,196 @@ export const ContainerApp = () => {
             sx={{
               color: "white",
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
               height: "calc(100vh - 10rem)",
             }}
           >
-            <Typography sx={{ fontFamily: "rexlia", fontSize: "1.5rem" }}>
-              Prueba2
-            </Typography>
             <Box
               component="img"
-              src="IMG/BRAND INVERBET_07.png"
-              sx={{ width: "70%" }}
+              src="IMG/N.png"
+              sx={{
+                width: "30%",
+                borderRight: "5px solid white",
+                margin: "0 4rem",
+              }}
             />
+            <Box>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "4rem" }}>
+                INVERBET <br /> PREMIUM
+              </Typography>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "2.5rem" }}>
+                Todo lo necesario para operar de manera segura.
+              </Typography>
+              <Button
+                sx={{
+                  marginTop: "0.5rem",
+                  padding: "0.5rem 1rem",
+                  color: "white",
+                  fontFamily: "rexlia",
+                  letterSpacing: "0.3rem",
+                  border: "2px solid white",
+                  borderRadius: "1rem",
+                }}
+              >
+                Leer mas
+              </Button>
+            </Box>
+          </Box>
+        )}
+        {currentPage === 3 && (
+          <Box
+            id="box-three"
+            className={
+              currentPage === 3
+                ? "animate__animated animate__fadeInLeft"
+                : "animate__animated animate__fadeInRight"
+            }
+            sx={{
+              color: "white",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "calc(100vh - 10rem)",
+            }}
+          >
+            <Box
+              component="img"
+              src="IMG/V.png"
+              sx={{
+                width: "30%",
+                borderRight: "5px solid white",
+                margin: "0 4rem",
+              }}
+            />
+            <Box>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "4rem" }}>
+                COWORKING <br /> INVERBET
+              </Typography>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "2.5rem" }}>
+                El espacio perfecto para operar de manera guíada y segura.
+              </Typography>
+              <Button
+                sx={{
+                  marginTop: "0.5rem",
+                  padding: "0.5rem 1rem",
+                  color: "white",
+                  fontFamily: "rexlia",
+                  letterSpacing: "0.3rem",
+                  border: "2px solid white",
+                  borderRadius: "1rem",
+                }}
+              >
+                Leer mas
+              </Button>
+            </Box>
+          </Box>
+        )}
+        {currentPage === 4 && (
+          <Box
+            id="box-three"
+            className={
+              currentPage === 4
+                ? "animate__animated animate__fadeInLeft"
+                : "animate__animated animate__fadeInRight"
+            }
+            sx={{
+              color: "white",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "calc(100vh - 10rem)",
+            }}
+          >
+            <Box
+              component="img"
+              src="IMG/E.png"
+              sx={{
+                width: "30%",
+                borderRight: "5px solid white",
+                margin: "0 4rem",
+              }}
+            />
+            <Box>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "4rem" }}>
+                INVERBET <br /> ACADEMY
+              </Typography>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "2.5rem" }}>
+                Metodos,estrategias,modelos y recomendaciones.
+              </Typography>
+              <Button
+                sx={{
+                  marginTop: "0.5rem",
+                  padding: "0.5rem 1rem",
+                  color: "white",
+                  fontFamily: "rexlia",
+                  letterSpacing: "0.3rem",
+                  border: "2px solid white",
+                  borderRadius: "1rem",
+                }}
+              >
+                Leer mas
+              </Button>
+            </Box>
+          </Box>
+        )}
+        {currentPage === 5 && (
+          <Box
+            id="box-three"
+            className={
+              currentPage === 5
+                ? "animate__animated animate__fadeInLeft"
+                : "animate__animated animate__fadeInRight"
+            }
+            sx={{
+              color: "white",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "calc(100vh - 10rem)",
+            }}
+          >
+            <Box
+              component="img"
+              src="IMG/R.png"
+              sx={{
+                width: "30%",
+                borderRight: "5px solid white",
+                margin: "0 4rem",
+              }}
+            />
+            <Box>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "4rem" }}>
+                CASAS DE <br /> APUESTAS
+              </Typography>
+              <Typography sx={{ fontFamily: "rexlia", fontSize: "2.5rem" }}>
+                Nuestros aliados para una operacion segura.
+              </Typography>
+              <Button
+                sx={{
+                  marginTop: "0.5rem",
+                  padding: "0.5rem 1rem",
+                  color: "white",
+                  fontFamily: "rexlia",
+                  letterSpacing: "0.3rem",
+                  border: "2px solid white",
+                  borderRadius: "1rem",
+                }}
+              >
+                Leer mas
+              </Button>
+            </Box>
           </Box>
         )}
         <Button onClick={handleNext}>
           <KeyboardArrowRight
             sx={{
               color: "white",
-              display: currentPage === 2 ? "none" : "block",
+              display: currentPage === 5 ? "none" : "block",
               fontSize: "5rem",
               cursor: "pointer",
             }}
