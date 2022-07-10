@@ -274,7 +274,7 @@ export const ContainerApp = () => {
                   borderRadius: "1rem",
                 }}
               >
-                Leer mas
+                Leer más
               </Button>
             </Box>
           </Box>
@@ -323,7 +323,7 @@ export const ContainerApp = () => {
                   borderRadius: "1rem",
                 }}
               >
-                Leer mas
+                Leer más
               </Button>
             </Box>
           </Box>
@@ -372,7 +372,7 @@ export const ContainerApp = () => {
                   borderRadius: "1rem",
                 }}
               >
-                Leer mas
+                Leer más
               </Button>
             </Box>
           </Box>
@@ -421,7 +421,7 @@ export const ContainerApp = () => {
                   borderRadius: "1rem",
                 }}
               >
-                Leer mas
+                Leer más
               </Button>
             </Box>
           </Box>
@@ -470,7 +470,7 @@ export const ContainerApp = () => {
                   borderRadius: "1rem",
                 }}
               >
-                Leer mas
+                Leer más
               </Button>
             </Box>
           </Box>
