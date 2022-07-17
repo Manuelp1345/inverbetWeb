@@ -581,9 +581,8 @@ export const ContainerApp = () => {
                 setErrors({ password: response });
               }}
             >
-              {({ isSubmitting }) => (
-                console.log("isSubmitting", isSubmitting),
-                !isSubmitting && (
+              {({ isSubmitting }) =>
+                (isSubmitting === false && (
                   <Form
                     style={{
                       width: "80%",
@@ -673,13 +672,13 @@ export const ContainerApp = () => {
                       Ingresar
                     </Button>
                   </Form>
-                ),
-                isSubmitting && (
+                )) ||
+                (isSubmitting === false && (
                   <Box sx={{ display: "flex" }}>
                     <CircularProgress />
                   </Box>
-                )
-              )}
+                ))
+              }
             </Formik>
           </Box>
         </Box>
