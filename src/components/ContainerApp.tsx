@@ -675,7 +675,9 @@ export const ContainerApp = () => {
                 )) ||
                 (isSubmitting === true && (
                   <Box sx={{ display: "flex" }}>
-                    <CircularProgress />
+                    <CircularProgress
+                      sx={{ color: "red", margin: 5, padding: 4 }}
+                    />
                   </Box>
                 ))
               }
