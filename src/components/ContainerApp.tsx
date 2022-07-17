@@ -1,10 +1,30 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { Button, Typography } from "@mui/material";
+import { Button, Modal, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
 
 export const ContainerApp = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [openLogin, setOpenLogin] = useState(false);
+  /*   const [openRegister, setopenRegister] = useState(false); */
+
+  const handleCloseLogin = () => setOpenLogin(false);
+
+  const getLogin = async (email: string, password: string) => {
+    const form = new FormData();
+    form.append("email", email);
+    form.append("password", password);
+
+    const response = await fetch("http://localhost/server/login.php", {
+      method: "POST",
+      body: form,
+    });
+    const data = await response.text();
+    console.log(data);
+    return data;
+  };
+
   const handleNext = () => {
     if (currentPage === 5) return;
 
@@ -177,6 +197,7 @@ export const ContainerApp = () => {
               registrate
             </Button>
             <Button
+              onClick={() => setOpenLogin(true)}
               sx={{
                 marginTop: "0.5rem",
                 color: "white",
@@ -486,6 +507,170 @@ export const ContainerApp = () => {
           />
         </Button>
       </Box>
+
+      <Modal
+        open={openLogin}
+        onClose={handleCloseLogin}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute" as "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 500,
+            bgcolor: "white",
+            borderRadius: 2.5,
+            boxShadow: 1,
+            p: 1.5,
+          }}
+        >
+          <Box
+            sx={{
+              borderRadius: 2.5,
+              border: "2px solid white ",
+              boxShadow: "inset 0 0 5px red,0 0 5px red",
+              p: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Box
+              component="img"
+              src="IMG/ISOTIPO INVERBET_01.png"
+              sx={{
+                width: "6rem",
+                filter: "drop-shadow(0px 0px 5px black)",
+              }}
+            />
+            <Formik
+              initialValues={{ email: "", password: "" }}
+              validate={(values) => {
+                const errors = {};
+                if (!values.email) {
+                  // @ts-ignore
+
+                  errors.email = "Correo requerido";
+                } else if (
+                  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                ) {
+                  // @ts-ignore
+
+                  errors.email = "Correo invalido";
+                }
+                if (!values.password) {
+                  // @ts-ignore
+
+                  errors.password = "Contraseña requerida";
+                }
+                return errors;
+              }}
+              onSubmit={async (values, { setSubmitting, setErrors }) => {
+                console.log("values", values);
+                const response = await getLogin(values.email, values.password);
+                setSubmitting(false);
+                setErrors({ password: response });
+              }}
+            >
+              {({ isSubmitting }) => (
+                <Form
+                  style={{
+                    width: "80%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Field
+                    style={{
+                      width: "100%",
+                      marginTop: "0.5rem",
+                      marginBottom: "0.5rem",
+                      padding: "0.5rem",
+                      fontFamily: "rexlia",
+                      border: "1px solid #686868",
+                      borderRadius: " 1rem",
+                    }}
+                    placeholder="Correo"
+                    type="email"
+                    name="email"
+                  />
+
+                  <ErrorMessage
+                    //@ts-ignore
+                    style={{
+                      color: "red",
+                      fontFamily: "rexlia",
+                      fontSize: "0.8rem",
+                      marginBottom: "0.5rem",
+                    }}
+                    name="email"
+                    component="div"
+                  />
+                  <Field
+                    style={{
+                      width: "100%",
+
+                      marginTop: "0.5rem",
+                      marginBottom: "0.5rem",
+                      padding: "0.5rem",
+                      fontFamily: "rexlia",
+                      border: "1px solid #686868",
+                      borderRadius: " 1rem",
+                    }}
+                    placeholder="Contraseña"
+                    type="password"
+                    name="password"
+                  />
+                  <ErrorMessage
+                    //@ts-ignore
+                    style={{
+                      color: "red",
+                      fontFamily: "rexlia",
+                      fontSize: "0.8rem",
+                      marginBottom: "0.5rem",
+                    }}
+                    name="password"
+                    component="div"
+                  />
+                  <Button
+                    sx={{
+                      fontFamily: "rexlia",
+                      fontSize: "0.7rem",
+                      color: "gray",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    olvide mi contraseña
+                  </Button>
+                  <Button
+                    sx={{
+                      fontFamily: "rexlia",
+                      fontSize: "0.7rem",
+                      color: "white",
+                      textShadow: "0 0 5px red,0 0 5px red",
+                      borderRadius: 2.5,
+                      border: "2px solid white ",
+                      boxShadow: "inset 0 0 5px red,0 0 5px red",
+                      marginBottom: "1rem",
+                      width: "100%",
+                    }}
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    Ingresar
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </Box>
+        </Box>
+      </Modal>
     </Box>
   );
 };
