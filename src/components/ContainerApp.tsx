@@ -571,7 +571,12 @@ export const ContainerApp = () => {
               }}
               onSubmit={async (values, { setSubmitting, setErrors }) => {
                 console.log("values", values);
-                const response = await getLogin(values.email, values.password);
+                let response;
+                try {
+                  response = await getLogin(values.email, values.password);
+                } catch (error) {
+                  response = "Ha ocurrido un error, intente nuevamente";
+                }
                 setSubmitting(false);
                 setErrors({ password: response });
               }}
