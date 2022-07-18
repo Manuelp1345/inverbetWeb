@@ -3082,11 +3082,11 @@ export const ContainerApp = () => {
                             width: "100%",
                             marginTop: "0.5rem",
                             marginBottom: "0.5rem",
-                            marginLeft: "-0.4rem",
+                            marginLeft: "0rem",
                             padding: "0.5rem",
                             fontFamily: "rexlia",
-                            border: "1px solid #686868",
-                            borderRadius: " 1rem",
+                            border: "none",
+                            borderRadius: "none",
                           }}
                           type="text"
                           name="phone_code"
