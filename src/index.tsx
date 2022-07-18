@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ContainerApp } from "./components/ContainerApp";
 import "./index.css";
-
 import "animate.css";
+import MainApp from "./components/MainApp";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <ContainerApp />
+    <MainApp />
   </React.StrictMode>
 );
