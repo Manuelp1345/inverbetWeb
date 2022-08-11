@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ContainerApp } from "./ContainerApp";
 import DashBoard from "./DashBoard";
 import SalvaPantallas from "./SalvaPantallas";
 
