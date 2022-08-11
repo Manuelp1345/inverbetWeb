@@ -24,7 +24,9 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Inverbet</title>
+    <link rel="stylesheet" href="css/simplyCountdown.theme.default.css" />
+    <script src="js/simplyCountdown.min.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -40,4 +42,23 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    window.onload = function () {
+      const cuentaAtras = document.querySelector(".simply-countdown");
+      //@ts-ignore
+      simplyCountdown(cuentaAtras, {
+        year: 2022, // required
+        month: 9, // required
+        day: 28, // required
+        inline: false,
+        words: {
+          //words displayed into the countdown
+          days: { singular: "Dia", plural: "Dias" },
+          hours: { singular: "Hora", plural: "Horas" },
+          minutes: { singular: "Minuto", plural: "Minutos" },
+          seconds: { singular: "second", plural: "seconds" },
+        },
+      });
+    };
+  </script>
 </html>

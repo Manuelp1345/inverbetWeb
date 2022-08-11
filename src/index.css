@@ -2,6 +2,10 @@
   font-family: "rexlia";
   src: url("/public/FONTS/rexlia/rexlia\ rg.otf");
 }
+@font-face {
+  font-family: "digit";
+  src: url("/public/FONTS/digi.TTF");
+}
 
 body {
   margin: 0;
@@ -17,4 +21,36 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.simply-countdown {
+  display: table;
+  font-family: "Arial", sans-serif;
+}
+.simply-countdown > .simply-section {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  box-shadow: none;
+  margin: 0;
+  padding: 35px;
+}
+.simply-countdown > .simply-section .simply-amount,
+.simply-countdown > .simply-section .simply-word {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 0 0 5px #fff;
+  font-family: "digit";
+}
+.simply-seconds-section {
+  display: none !important;
+}
+
+.simply-amount {
+  font-size: 3rem !important;
+}
+.simply-word {
+  font-size: 1.5rem;
 }
